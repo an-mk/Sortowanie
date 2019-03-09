@@ -1,3 +1,10 @@
+# Created manually
+*.sln
+*.vcxproj
+*.filters
+*.dir
+Win32
+# End of created manually
 
 # Created by https://www.gitignore.io/api/cmake,codeblocks,visualstudio,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=cmake,codeblocks,visualstudio,visualstudiocode

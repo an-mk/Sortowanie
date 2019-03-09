@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build with cmake and run",
+            "type": "shell",
+            "command": "cmake . ; cmake --build . --config Release ; ./Release/test",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
