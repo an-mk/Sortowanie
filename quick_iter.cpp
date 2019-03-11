@@ -6,15 +6,17 @@
 //template<typename C>
 //class TD;
 
+using PosT = signed long long;
+
 template <typename T>
 o__constexpr void sort::quicksort_iter(std::vector<T> &vec)
 {
-	std::stack< std::pair<std::size_t, std::size_t > > stosik;
-	stosik.push(std::make_pair<std::size_t, std::size_t>(0, vec.size()-1) );
+	std::stack< std::pair<PosT, PosT > > stosik;
+	stosik.push(std::make_pair<PosT, PosT>(0, vec.size()-1) );
 
 	do{
-		auto left = static_cast<std::size_t>(stosik.top().first);
-		auto right = static_cast<std::size_t>(stosik.top().second);
+		auto left = static_cast<PosT>(stosik.top().first);
+		auto right = static_cast<PosT>(stosik.top().second);
 		stosik.pop();
 		do{
 			auto l = left;
@@ -30,7 +32,7 @@ o__constexpr void sort::quicksort_iter(std::vector<T> &vec)
 				}
 			}while(l <= r);
 			if(l < right){
-				stosik.push(std::make_pair<std::size_t, std::size_t>(static_cast<std::size_t>(l), static_cast<std::size_t>(right)) );
+				stosik.push(std::make_pair<PosT, PosT>(static_cast<PosT>(l), static_cast<PosT>(right)) );
 			}
 			right = r;
 		}while(left < right);
