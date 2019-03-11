@@ -41,4 +41,14 @@ std::vector<int> vShapedTestGenerator(const std::size_t& sizeOfTest)
     return ret;
 }
 
+std::vector<int> costTestGenerator(const std::size_t& sizeOfTest)
+{
+    std::vector<int> ret = randomTestGenerator(sizeOfTest);
+    for(int& n : ret)
+    {
+        n = ret.front();
+    }
+    return ret;
+}
+
 #endif /* !TESTGENERATORS_H_ */

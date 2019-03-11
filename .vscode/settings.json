@@ -41,6 +41,8 @@
         "vector": "cpp",
         "random": "cpp",
         "array": "cpp",
-        "iterator": "cpp"
+        "iterator": "cpp",
+        "deque": "cpp",
+        "stack": "cpp"
     }
 }
