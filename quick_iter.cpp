@@ -9,7 +9,7 @@
 using PosT = signed long long;
 
 template <typename T>
-o__constexpr void sort::quicksort_iter(std::vector<T> &vec)
+/*o__constexpr*/ void sort::quicksort_iter(std::vector<T> &vec)
 {
 	std::stack< std::pair<PosT, PosT > > stosik;
 	stosik.push(std::make_pair<PosT, PosT>(0, vec.size()-1) );
@@ -32,7 +32,7 @@ o__constexpr void sort::quicksort_iter(std::vector<T> &vec)
 				}
 			}while(l <= r);
 			if(l < right){
-				stosik.push(std::make_pair<PosT, PosT>(static_cast<PosT>(l), static_cast<PosT>(right)) );
+				stosik.emplace(l, right);
 			}
 			right = r;
 		}while(left < right);
