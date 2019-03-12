@@ -21,7 +21,7 @@ inline void merge(It beginA, It endA, It beginB, It endB, VIt dest) noexcept
         *(dest++) = *(beginA++);
     while (beginB < endB)
         *(dest++) = *(beginB++);
-        
+
     // Rozwiązanie z memcpy jest wbrew pozorom wolniejsze!!!
 
     //if (beginA < endA)
@@ -54,9 +54,10 @@ void mergeSortHelper(It begin, It end, TIt tempBegin) noexcept
     mergeSortHelper(begin, begin + distance/2, tempBegin);
     mergeSortHelper(begin + distance/2, end, tempBegin);
     merge(begin, begin + distance/2, begin + distance/2, end, tempBegin);
-    TIt tIt = tempBegin;
-    while (begin != end)
-        *(begin++) = *(tIt++);
+    //TIt tIt = tempBegin;
+    //while (begin != end)
+    //    *(begin++) = *(tIt++);
+    std::memcpy(&*begin, &*tempBegin, distance * sizeof(std::remove_reference_t<decltype(*begin)>));
 }
 
 template <class It>
