@@ -3,6 +3,7 @@
 *.vcxproj
 *.filters
 *.dir
+**.exe
 Win32
 # End of created manually
 

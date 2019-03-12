@@ -2,6 +2,7 @@
 #include "testGenerators.h"
 #include "mergeSort.h"
 #include "quick_iter.hpp"
+#include "heapsort.hpp"
 
 int main() 
 {
@@ -23,6 +24,11 @@ int main()
     std::cout<<"quickSortIter\t";
     auto quickSortTest = makeMeasurementTool(sort::quicksort_iter<int>, randomTestGenerator, 1000, 50000, 100000);
     for (const auto& el : quickSortTest.getResults())
+        std::cout<<el.count()<<" ";
+    std::cout<<std::endl;
+	    std::cout<<"heapsort\t";
+    auto heapSortTest = makeMeasurementTool([](std::vector<int>& v){sort::heapsort(v.begin(), v.end());}, randomTestGenerator, 1000, 50000, 100000);
+    for (const auto& el : heapSortTest.getResults())
         std::cout<<el.count()<<" ";
     std::cout<<std::endl;
     return 0;
