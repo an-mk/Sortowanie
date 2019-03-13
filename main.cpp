@@ -4,6 +4,7 @@
 #include "quickSort.h"
 #include "quick_iter.hpp"
 #include "heapsort.hpp"
+#include "selection.hpp"
 
 #define TESTS 10000, 50000, 100000
 
@@ -36,6 +37,12 @@ int main()
     std::cout<<"heapsort\t";
     auto heapSortTest = makeMeasurementTool([](std::vector<int>& v){sort::heapsort(v.begin(), v.end());}, randomTestGenerator, TESTS);
     for (const auto& el : heapSortTest.getResults())
+        std::cout<<el.count()<<" ";
+    std::cout<<std::endl;
+	
+	std::cout<<"selectionSort\t";
+    auto selectionSortTest = makeMeasurementTool([](std::vector<int>& v){sort::selectionSort(v.begin(), v.end());}, randomTestGenerator, TESTS);
+    for (const auto& el : selectionSortTest.getResults())
         std::cout<<el.count()<<" ";
     std::cout<<std::endl;
 
