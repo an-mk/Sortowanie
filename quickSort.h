@@ -13,7 +13,7 @@ namespace sort
     template <class It>
     inline It partition(It begin, It end) noexcept
     {
-        static std::remove_reference_t<decltype(*begin)> pivot = *(begin + std::distance(begin, end)/2);
+        std::remove_reference_t<decltype(*begin)> pivot = *(begin + std::distance(begin, end)/2);
         while (true)
         {
 			while (*end > pivot) end--;
