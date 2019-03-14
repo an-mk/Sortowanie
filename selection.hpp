@@ -7,7 +7,7 @@ namespace sort{
 	void selectionSort(const It begin,const It end);	
 	
 	template<typename T>
-	void selectionSort(T container)
+	void selectionSort(T &container)
 	{
 		selectionSort(begin(container), end(container));
 	}
