@@ -9,6 +9,12 @@
 
 int main() 
 {
+    MesurementLab<10000, 50000, 100000> lab;
+    lab(std::sort, "stdSort");
+    lab(sort::mergeSort, "mergeSort");
+    lab(sort::quickSort, "quickSort");
+    lab(sort::quicksort_iter, "quickSortIter");
+    lab(sort::heapsort, "heapsort");
     auto stdSortTest = makeMeasurementTool([](std::vector<int>& v){std::sort(v.begin(), v.end());}, randomTestGenerator, TESTS);
     std::cout<<"stdSort\t\t";
     for (const auto& el : stdSortTest.getResults())
