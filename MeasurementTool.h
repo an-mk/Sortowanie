@@ -7,6 +7,7 @@
 #include <array>
 #include <vector>
 #include <iostream>
+#include <string>
 
 template <typename T>
 struct getArity
@@ -92,6 +93,7 @@ public:
         {
             j = iterationsOfTests;
             results[i] = std::chrono::microseconds(0);
+            std::cout<<"#";
             while (j--)
             {
                 auto testData = t(result);
@@ -105,11 +107,12 @@ public:
             results[i] /= iterationsOfTests;
             i++;
         }
+        std::cout<<std::string(sizeof...(numbers), '\b');
     }
     std::array<std::chrono::microseconds, sizeof...(SizesOfTests)>& getResults() { return results; }
 private:
     std::array<std::chrono::microseconds, sizeof...(SizesOfTests)> results;
-    static constexpr std::size_t iterationsOfTests = 100;
+    static constexpr std::size_t iterationsOfTests = 20;
 };
 
 template <class FunctionToTest, class TestGenerator, class... SizesOfTests>
@@ -130,11 +133,15 @@ public:
     {
         process(f, str);
     }
+    void setTestGenerator(std::vector<int>(*newTestGenerator)(const std::size_t& sizeOfTest))
+    {
+        testGenerator = newTestGenerator;
+    }
 private:
     template <class T>
     void process(T f, const char* str)
     {
-        auto stdSortTest = makeMeasurementTool(f, randomTestGenerator, SizesOfTests...);
+        auto stdSortTest = makeMeasurementTool(f, testGenerator, SizesOfTests...);
         std::cout<<str<<"\t\t";
         for (const auto& el : stdSortTest.getResults())
         std::cout<<el.count()<<" ";

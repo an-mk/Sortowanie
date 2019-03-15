@@ -6,11 +6,11 @@ namespace sort{
 template<typename It>
 void heapsort(const It beg,const It end);
 
-template<typename T>
-void heapsort(T &c)
-{
-	heapsort(begin(c), end(c));
-}
+//template<typename T>
+//void heapsort(T &c)
+//{
+//	heapsort(begin(c), end(c));
+//}
 
 }
 

@@ -43,6 +43,7 @@
         "array": "cpp",
         "iterator": "cpp",
         "deque": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "string": "cpp"
     }
 }

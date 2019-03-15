@@ -6,11 +6,11 @@ namespace sort{
 	template<typename It>
 	void selectionSort(const It begin,const It end);	
 	
-	template<typename T>
-	void selectionSort(T &container)
-	{
-		selectionSort(begin(container), end(container));
-	}
+	//template<typename T>
+	//void selectionSort(T &container)
+	//{
+	//	selectionSort(begin(container), end(container));
+	//}
 
 }
 

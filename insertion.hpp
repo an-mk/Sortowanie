@@ -6,11 +6,11 @@ namespace sort{
 	template<typename It>
 	void insertionSort(const It begin,const It end);	
 	
-	template<typename T>
-	void insertionSort(T &container)
-	{
-		insertionSort(begin(container), end(container));
-	}
+	//template<typename T>
+	//void insertionSort(T &container)
+	//{
+	//	insertionSort(begin(container), end(container));
+	//}
 
 }
 
