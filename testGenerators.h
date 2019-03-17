@@ -13,6 +13,6 @@ std::vector<int> randomTestGenerator(const std::size_t& sizeOfTest);
 std::vector<int> sortedTestGenerator(const std::size_t& sizeOfTest);
 std::vector<int> reversedSortedTestGenerator(const std::size_t& sizeOfTest);
 std::vector<int> vShapedTestGenerator(const std::size_t& sizeOfTest);
-std::vector<int> costTestGenerator(const std::size_t& sizeOfTest);
+std::vector<int> constTestGenerator(const std::size_t& sizeOfTest);
 
 #endif /* !TESTGENERATORS_H_ */

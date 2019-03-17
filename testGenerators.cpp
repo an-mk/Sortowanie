@@ -28,19 +28,20 @@ std::vector<int> sortedTestGenerator(const std::size_t& sizeOfTest)
 std::vector<int> reversedSortedTestGenerator(const std::size_t& sizeOfTest)
 {
     std::vector<int> ret = sortedTestGenerator(sizeOfTest);
-    std::sort(ret.begin(), ret.begin() + ret.size() / 2);
-    std::sort(ret.begin() + ret.size() / 2 + 1, ret.end());
+    std::reverse(ret.begin(), ret.end());
     return ret;
 }
 
 std::vector<int> vShapedTestGenerator(const std::size_t& sizeOfTest)
 {
     std::vector<int> ret = randomTestGenerator(sizeOfTest);
-    std::sort(ret.begin(), ret.end());
+    std::sort(ret.begin(), ret.begin() + ret.size() / 2);
+    std::reverse(ret.begin(), ret.begin() + ret.size() / 2);
+    std::sort(ret.begin() + ret.size() / 2 + 1, ret.end());
     return ret;
 }
 
-std::vector<int> costTestGenerator(const std::size_t& sizeOfTest)
+std::vector<int> constTestGenerator(const std::size_t& sizeOfTest)
 {
     std::vector<int> ret = randomTestGenerator(sizeOfTest);
     for(int& n : ret)

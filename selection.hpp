@@ -1,6 +1,9 @@
 #ifndef _SELECTION_H_
 #define _SELECTION_H_
 
+#include <type_traits>
+#include "utils.h"
+
 namespace sort{
 
 	template<typename It>
@@ -25,7 +28,7 @@ void sort::selectionSort(const It begin,const It end)
 		{
 			if(*j > *max)max = j;
 		}
-		std::swap(*i, *max);
+		swap(*i, *max);
 	}
 }
 

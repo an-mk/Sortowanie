@@ -9,6 +9,8 @@
 #include <iostream>
 #include <string>
 
+using timeType = std::chrono::microseconds;
+
 template <typename T>
 struct getArity
 {
@@ -48,7 +50,7 @@ public:
         for (const auto& result : {numbers...})
         {
             j = iterationsOfTests;
-            results[i] = std::chrono::microseconds(0);
+            results[i] = timeType(0);
             while (j--)
             {
                 auto testData = t(result);
@@ -57,7 +59,7 @@ public:
                 end = std::chrono::high_resolution_clock::now();
                 if (!std::is_sorted(std::begin(testData), std::end(testData)))
                     std::cerr<<"Sort failed\n";
-                results[i] += std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+                results[i] += std::chrono::duration_cast<timeType>(end - start);
             }
             results[i] /= iterationsOfTests;
             i++;
@@ -70,7 +72,7 @@ public:
         for (const auto& result : {numbers...})
         {
             j = iterationsOfTests;
-            results[i] = std::chrono::microseconds(0);
+            results[i] = timeType(0);
             while (j--)
             {
                 auto testData = t(result);
@@ -79,7 +81,7 @@ public:
                 end = std::chrono::high_resolution_clock::now();
                 if (!std::is_sorted(std::begin(testData), std::end(testData)))
                     std::cerr<<"Sort failed\n";
-                results[i] += std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+                results[i] += std::chrono::duration_cast<timeType>(end - start);
             }
             results[i] /= iterationsOfTests;
             i++;
@@ -92,8 +94,8 @@ public:
         for (const auto& result : {numbers...})
         {
             j = iterationsOfTests;
-            results[i] = std::chrono::microseconds(0);
-            std::cout<<"#";
+            results[i] = timeType(0);
+            //std::cout<<"#";
             while (j--)
             {
                 auto testData = t(result);
@@ -102,17 +104,17 @@ public:
                 end = std::chrono::high_resolution_clock::now();
                 if (!std::is_sorted(std::begin(testData), std::end(testData)))
                     std::cerr<<"Sort failed\n";
-                results[i] += std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+                results[i] += std::chrono::duration_cast<timeType>(end - start);
             }
             results[i] /= iterationsOfTests;
             i++;
         }
-        std::cout<<std::string(sizeof...(numbers), '\b');
+        //std::cout<<std::string(sizeof...(numbers), '\b');
     }
-    std::array<std::chrono::microseconds, sizeof...(SizesOfTests)>& getResults() { return results; }
+    std::array<timeType, sizeof...(SizesOfTests)>& getResults() { return results; }
 private:
-    std::array<std::chrono::microseconds, sizeof...(SizesOfTests)> results;
-    static constexpr std::size_t iterationsOfTests = 20;
+    std::array<timeType, sizeof...(SizesOfTests)> results;
+    static constexpr std::size_t iterationsOfTests = 100;
 };
 
 template <class FunctionToTest, class TestGenerator, class... SizesOfTests>
@@ -142,9 +144,9 @@ private:
     void process(T f, const char* str)
     {
         auto stdSortTest = makeMeasurementTool(f, testGenerator, SizesOfTests...);
-        std::cout<<str<<"\t\t";
+        std::cout<<str<<", ";
         for (const auto& el : stdSortTest.getResults())
-        std::cout<<el.count()<<" ";
+        std::cout<<el.count()<<", ";
         std::cout<<std::endl;
     }
     std::vector<int>(*testGenerator)(const std::size_t& sizeOfTest) = nullptr;
