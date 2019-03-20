@@ -41,6 +41,14 @@ std::vector<int> vShapedTestGenerator(const std::size_t& sizeOfTest)
     return ret;
 }
 
+std::vector<int> AShapedTestGenerator(const std::size_t& sizeOfTest)
+{
+    std::vector<int> ret = randomTestGenerator(sizeOfTest);
+    std::sort(ret.begin(), ret.end());
+	std::reverse(ret.begin() + ret.size() / 2 + 1, ret.end());
+    return ret;
+}
+
 std::vector<int> constTestGenerator(const std::size_t& sizeOfTest)
 {
     std::vector<int> ret = randomTestGenerator(sizeOfTest);
